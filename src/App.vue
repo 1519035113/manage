@@ -4,9 +4,12 @@
     <router-view/>
   </div>
 </template>
-
 <style lang="scss">
 
-
-
 </style>
+<script>
+import './styles/index.css'
+export default {
+  
+}
+</script>
