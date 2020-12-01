@@ -51,7 +51,7 @@ export default {
       this.$refs[formName].validate(async valid => {
         if (valid) {
             let res =await this.$axios.post('login',this.loginForm)
-            console.log(res)
+            // console.log(res)
             if(res.status == 200 ){
               this.$message.success(res.data.meta.msg)
               localStorage.setItem('token',res.data.data.token) 

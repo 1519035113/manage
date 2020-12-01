@@ -45,5 +45,70 @@ export default [{
                 bread:['权限管理','权限列表']
             }
         }]
+    },
+    {
+        path: '/home/goods',
+        component: () => import('@/views/home/index'),
+        children: [{
+            path: '/',
+            component: () => import('@/views/goods/goods'),
+            meta:{
+                bread:['商品管理','商品列表']
+            }
+        }]
+    },
+    {
+        path: '/home/addgoods',
+        component: () => import('@/views/home/index'),
+        children: [{
+            path: '/',
+            component: () => import('@/views/goods/addgoods'),
+        }]
+    },
+    {
+        path: '/home/params',
+        component: () => import('@/views/home/index'),
+        children: [{
+            path: '/',
+            component: () => import('@/views/goods/params'),
+            meta:{
+                bread:['商品管理','分类参数']
+            }
+        }]
+    },
+    {
+        path: '/home/categories',
+        component: () => import('@/views/home/index'),
+        children: [{
+            path: '/',
+            component: () => import('@/views/goods/cate'),
+            meta:{
+                bread:['商品管理','商品分类']
+            }
+        }]
+    },
+    {
+        path: '/home/orders',
+        component: () => import('@/views/home/index'),
+        children: [{
+            path: '/',
+            component: () => import('@/views/order/index'),
+            meta:{
+                bread:['订单管理','订单列表']
+            }
+        }]
+    },
+    
+    {
+        path: '/home/reports',
+        component: () => import('@/views/home/index'),
+        children: [{
+            path: '/',
+            component: () => import('@/views/reports/index'),
+            meta:{
+                bread:['数据统计','数据报表']
+            }
+        }]
     }
+
 ]

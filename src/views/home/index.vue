@@ -59,12 +59,12 @@ export default {
     return {
       isCollapse: true,
       menus: [],
-      menuIcon:{
-        '125':'iconfont icon-users',
-        '103':'iconfont icon-tijikongjian',
-        '101':'iconfont icon-shangpin',
-        '102':'iconfont icon-danju',
-        '145':'iconfont icon-baobiao'
+      menuIcon: {
+        "125": "iconfont icon-users",
+        "103": "iconfont icon-tijikongjian",
+        "101": "iconfont icon-shangpin",
+        "102": "iconfont icon-danju",
+        "145": "iconfont icon-baobiao"
       }
     };
   },
@@ -113,7 +113,7 @@ export default {
     },
     async getMenu() {
       let res = await this.$axios.get("menus");
-      console.log(res);
+      // console.log(res);
       this.menus = res.data.data;
     }
   },
@@ -148,7 +148,6 @@ export default {
 .el-aside {
   background-color: #333744;
   color: #fff;
-  
 }
 .el-col {
   width: 100%;
@@ -165,8 +164,6 @@ export default {
 }
 .el-main {
   background-color: #eaedf1;
-  color: #333;
-  text-align: center;
-  line-height: 160px;
+  padding: 20px;
 }
 </style>
