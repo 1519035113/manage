@@ -181,4 +181,5 @@ export default {
   padding: 20px 0 0 20px;
   background: #fff;
 }
+
 </style>

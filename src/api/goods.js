@@ -49,20 +49,42 @@ export function editCateList(name,id){
         data:{cat_name:name}
     })
 }
-
+// 获取所有商品分类数据
 export function cascaderList(){
     return request({
         url:`categories`,
         method:'GET',
     })
 }
-
-export function goodsCan(id){
+// 获取商品参数列表
+export function goodsCan(id,sel){
     return request({
-        url:`categories/${id}/attributes?sel=many`,
+        url:`categories/${id}/attributes?sel=${sel}`,
         method:'GET',
     })
 }
+// 添加动态参数或静态属性接口
+export function addAttr(id,attr_name,attr_sel,attr_vals){
+    return request({
+        url:`categories/${id}/attributes`,
+        method:'POST',
+        data:{
+            attr_name,
+            attr_sel,
+            attr_vals
+        }
+    })
+}
+
+// 修改动态参数或静态属性接口
+export function editData(id,attrId,attr_name,attr_sel,attr_vals){
+    return request({
+        url:`categories/${id}/attributes/${attrId}`,
+        method:'PUT',
+        data:{attr_name,attr_sel,attr_vals}
+    })
+}
+
 
 // 动态参数删除子级接口
 export function removeAttr(id1,id2,attr_name,attr_sel,attr_vals){
@@ -74,5 +96,27 @@ export function removeAttr(id1,id2,attr_name,attr_sel,attr_vals){
             attr_sel,
             attr_vals
         }
+    })
+}
+
+// 动态参数静态属性添加子级接口
+export function addChild(id,attrId,attr_name,attr_sel,attr_vals){
+    return request({
+        url:`categories/${id}/attributes/${attrId}`,
+        method:'PUT',
+        data:{
+            attr_name,
+            attr_sel,
+            attr_vals
+        }
+    })
+}
+
+// 添加商品接口
+export function addGoods(data){
+    return request({
+        url:'goods',
+        method:'POST',
+        data:data
     })
 }

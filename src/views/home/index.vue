@@ -13,7 +13,7 @@
       </el-header>
       <el-container>
         <!-- 左侧菜单 -->
-        <el-aside id="aside" width="64px">
+        <el-aside id="aside" width="200px">
           <el-col :span="12">
             <p class="status" @click="flag">|||</p>
             <el-menu
@@ -57,7 +57,7 @@ import Bread from "../../components/Bread";
 export default {
   data() {
     return {
-      isCollapse: true,
+      isCollapse: false,
       menus: [],
       menuIcon: {
         "125": "iconfont icon-users",
