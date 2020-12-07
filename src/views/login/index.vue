@@ -7,14 +7,23 @@
       <el-form :model="loginForm" status-icon :rules="rules" ref="loginForm" class="demo-ruleForm">
         <el-form-item prop="username">
           <!-- <i class="icons el-icon-user-solid"></i> -->
-          <el-input v-model="loginForm.username" prefix-icon="el-icon-user-solid" style="width:410px;"></el-input>
+          <el-input
+            v-model="loginForm.username"
+            prefix-icon="el-icon-user-solid"
+            style="width:410px;"
+          ></el-input>
         </el-form-item>
         <el-form-item prop="password">
           <!-- <i class="icons el-icon-lock"></i> -->
-          <el-input type="password" v-model="loginForm.password" prefix-icon="el-icon-lock" style="width:410px"></el-input>
+          <el-input
+            type="password"
+            v-model="loginForm.password"
+            prefix-icon="el-icon-lock"
+            style="width:410px"
+          ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('loginForm')">提交</el-button>
+          <el-button type="primary" @click="goLogin('loginForm')">提交</el-button>
           <el-button @click="resetForm('loginForm')">重置</el-button>
         </el-form-item>
       </el-form>
@@ -23,6 +32,18 @@
 </template>
 
 <script>
+import _ from 'lodash'
+function a(fun, wait) {
+      let time;
+      let ags =  arguments
+      return function() {
+        let that = this;
+        clearTimeout(time);
+        time = setTimeout(() => {
+          fun.apply(that,ags);
+        }, wait);
+      };
+    }
 export default {
   data() {
     return {
@@ -47,16 +68,21 @@ export default {
   mounted() {},
   watch: {},
   methods: {
+    
+    goLogin: _.throttle(function(formName){
+      this.submitForm(formName)
+    }, 2000),
+
     submitForm(formName) {
       this.$refs[formName].validate(async valid => {
         if (valid) {
-            let res =await this.$axios.post('login',this.loginForm)
-            // console.log(res)
-            if(res.status == 200 ){
-              this.$message.success(res.data.meta.msg)
-              localStorage.setItem('token',res.data.data.token) 
-              this.$router.push('/home')
-            }
+          let res = await this.$axios.post("login", this.loginForm);
+          // console.log(res)
+          if (res.status == 200) {
+            this.$message.success(res.data.meta.msg);
+            localStorage.setItem("token", res.data.data.token);
+            this.$router.push("/home");
+          }
         } else {
           console.log("error submit!!");
           return false;
@@ -115,14 +141,13 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   .icons {
     position: absolute;
     left: 10px;
     top: 13px;
     z-index: 4;
     color: #999;
-    
   }
 }
 </style>

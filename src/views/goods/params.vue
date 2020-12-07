@@ -160,11 +160,12 @@
 
 <script>
 import {
-  cascaderList,
-  goodsCan,
-  removeAttr,
-  addAttr,
-  editData,
+  
+  cascaderList,//获取商品分类内容
+  goodsCan,//获取表格数据
+  // removeAttr,
+  addAttr,//添加动态参数或静态属性
+  editData,//修改动态参数或静态属性
   addChild
 } from "@/api/goods";
 export default {

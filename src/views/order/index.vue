@@ -10,8 +10,8 @@
       <el-table-column prop="order_price" label="订单价格"></el-table-column>
       <el-table-column prop="order_pay" label="是否付款">
         <template slot-scope="scope">
-          <el-tag v-if="scope.row.order_pay == 1" type effect="dark">已付款</el-tag>
-          <el-tag v-else type="danger" effect="dark">未付款</el-tag>
+          <el-tag size="mini" v-if="scope.row.order_pay == 1" type effect="dark">已付款</el-tag>
+          <el-tag size="mini" v-else type="danger" effect="dark">未付款</el-tag>
         </template>
       </el-table-column>
       <el-table-column prop="is_send" label="是否发货"></el-table-column>
@@ -125,6 +125,7 @@ export default {
     },
     //   获取订单列表
     async getData() {
+      console.log('111')
       let { data: res } = await getOrderList(
         this.query,
         this.pagenum,

@@ -8,7 +8,7 @@
           <el-row
             :class="['bdbottom', index == 0 ? 'bdtop' :'','bdleft','aic' ]"
             v-for="(item,index) in scope.row.children"
-            :key="index"
+            :key="item.id"
           >
             <el-col :span="5">
               <el-tag
@@ -22,7 +22,7 @@
               <el-row
                 :class="[index2 == 0?'':'bdtop','bdleft','aic']"
                 v-for="(item2,index2) in item.children"
-                :key="index2"
+                :key="item2.id"
               >
                 <el-col :span="6">
                   <el-tag
@@ -36,7 +36,7 @@
                 <el-col :span="18">
                   <el-tag
                     v-for="(item3,index3) in item2.children"
-                    :key="index3"
+                    :key="item3.id"
                     type="warning"
                     closable
                     @close="removeTag3(scope.row,item3.id)"
