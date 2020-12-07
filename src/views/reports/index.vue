@@ -6,18 +6,49 @@
 </template>
 
 <script>
+import _ from 'lodash'
 export default {
   data() {
     return {
-      option: []
+      option: [],
+      options: {
+        title: {
+          text: "用户来源"
+        },
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            type: "cross",
+            label: {
+              backgroundColor: "#E9EEF3"
+            }
+          }
+        },
+        grid: {
+          left: "3%",
+          right: "4%",
+          bottom: "3%",
+          containLabel: true
+        },
+        xAxis: [
+          {
+            boundaryGap: false
+          }
+        ],
+        yAxis: [
+          {
+            type: "value"
+          }
+        ]
+      }
     };
   },
   computed: {},
   created() {},
   mounted() {
-    console.log(document.getElementById('main'))
+    console.log(document.getElementById("main"));
     this.$nextTick(async function() {
-    console.log(document.getElementById('main'))
+      console.log(document.getElementById("main"));
 
       // 基于准备好的dom，初始化echarts实例
       var myChart = this.$echarts.init(document.getElementById("main"));
@@ -40,7 +71,9 @@ export default {
       // });
 
       if (res.meta.status == 200) {
-        this.option = res.data;
+        // this.option = res.data;
+        // 合并
+       this.option = _.merge(res.data,this.options)
       }
 
       // 使用刚指定的配置项和数据显示图表。
